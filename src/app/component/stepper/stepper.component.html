@@ -1,0 +1,49 @@
+<mat-horizontal-stepper #stepper>
+  <ng-container *ngFor="let step of field.fieldGroup; let index = index; let last = last">
+    <ng-container *ngIf="!step.templateOptions.isPopup">
+      <mat-step *ngIf="step.hide === undefined || step.hide === false">
+          <!-- <p style="color:blue;">has hide?:{{ step.hasOwnProperty('hide') }}</p>
+                  <p style="color:green;">hide value: {{ step.hide }}</p>
+                  <pre style="color:red;">{{ step | json }}</pre> -->
+          <ng-template matStepLabel>{{ step.templateOptions.label }}</ng-template>
+          <formly-field [field]="step"></formly-field>
+
+          <div>
+            <button (click)="move(index)" *ngIf="index !== 0" class="btn btn-primary" type="button">
+              Back
+            </button>
+
+            <button (click)="move(index)" *ngIf="!last" class="btn btn-primary"
+                    type="button" [disabled]="!isValid(step)"
+                    >
+              Next
+            </button>
+
+            <button *ngIf="last" class="btn btn-primary" [disabled]="!form.valid" type="submit">
+              Submit
+            </button>
+          </div>
+      </mat-step>
+    </ng-container>
+    <ng-container *ngIf="step.templateOptions.isPopup">
+      <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>
+
+
+      <ng-template #mymodal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <formly-field [field]="step"></formly-field>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+        </div>
+      </ng-template>
+    </ng-container>
+
+  </ng-container>
+</mat-horizontal-stepper>

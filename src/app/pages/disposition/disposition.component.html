@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-6 text-center order-2"> je suis a droite</div>
+    <div class="col-6 text-center order-1"> je suis a gauche</div>
+  </div>
+  <div class="row">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-12">
+      <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+</div>
