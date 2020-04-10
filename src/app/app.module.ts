@@ -13,13 +13,15 @@ import { FileTypeCustomComponent } from './component/file-type-custom/file-type-
 import { StepperComponent } from './component/stepper/stepper.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { InformationComponent } from './component/information/information.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmationDialogComponent,
     FileTypeCustomComponent,
-    StepperComponent
+    StepperComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,

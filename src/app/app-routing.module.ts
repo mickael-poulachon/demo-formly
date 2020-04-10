@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'steppopup',
     loadChildren: () => import('./pages/steppopup/steppopup.module').then(m => m.SteppopupModule)
   },
+  {
+    path: 'blocinfo',
+    loadChildren: () => import('./pages/blocinfo/blocinfo.module').then(m => m.BlocinfoModule)
+  },
 ];
 
 @NgModule({
